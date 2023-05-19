@@ -28,6 +28,12 @@ explore: core_tenancies {}
 
 explore: core_tf_grouped {}
 
-explore: core_issues_syn {}
+explore: core_issues_syn {
+  join: core_locations {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${core_issues_syn.location_id} = {core_locations.id} ;;
+    }
+  }
 
 explore: core_tenanciesv2 {}
